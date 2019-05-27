@@ -60,8 +60,12 @@
   }
   .section_heading{
     text-transform: uppercase;
-    width: 120px;
+    width: 300px;
     padding-right: 10px;
+    font-weight: 600;
+  }
+  .resume-content{
+    margin-left: 50px;
   }
 
   /*LOADER*/

@@ -27,40 +27,32 @@ class Home extends Component{
                       <div className="section_heading uppercase">
                       	   professional summary
                       </div>
-                      <div className="txt-right">
-                      	  <div>8299852138</div>
-                      	  <div>Cras id dui. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, Bangalore, KA, 560017</div>
-                      	  <div>sunny@gmail.com</div>
+                      <div className="resume-content">
+                      	  <div>Highly organized and meticulous Administrative Assistant with experience in corporate office settings.Adept at preparing and maintaining files, greeting visitors and restocking supplies. Good communicator and planner with strong judgment and critical thinking abilities.</div>
                       </div>
 		         </div>
 		         <div className="flex resume_section resume_skills">
                       <div className="section_heading uppercase">
                       	  skills
                       </div>
-                      <div className="txt-right">
-                      	  <div>8299852138</div>
-                      	  <div>Cras id dui. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, Bangalore, KA, 560017</div>
-                      	  <div>sunny@gmail.com</div>
+                      <div className="resume-content">
+                      	  <div>Highly organized and meticulous Administrative Assistant with experience in corporate office settings.Adept at preparing and maintaining files, greeting visitors and restocking supplies. Good communicator and planner with strong judgment and critical thinking abilities.</div>
                       </div>
 		         </div>
 		         <div className="flex resume_section resume_work">
                       <div className="section_heading uppercase">
                       	  work history
                       </div>
-                      <div className="txt-right">
-                      	  <div>8299852138</div>
-                      	  <div>Cras id dui. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, Bangalore, KA, 560017</div>
-                      	  <div>sunny@gmail.com</div>
+                      <div className="resume-content">
+                      	  <div>Highly organized and meticulous Administrative Assistant with experience in corporate office settings.Adept at preparing and maintaining files, greeting visitors and restocking supplies. Good communicator and planner with strong judgment and critical thinking abilities.</div>
                       </div>
 		         </div>
 		         <div className="flex resume_section resume_education">
                       <div className="section_heading uppercase">
                       	  education
                       </div>
-                      <div className="txt-right">
-                      	  <div>8299852138</div>
-                      	  <div>Cras id dui. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, Bangalore, KA, 560017</div>
-                      	  <div>sunny@gmail.com</div>
+                      <div className="resume-content">
+                      	  <div>Highly organized and meticulous Administrative Assistant with experience in corporate office settings.Adept at preparing and maintaining files, greeting visitors and restocking supplies. Good communicator and planner with strong judgment and critical thinking abilities.</div>
                       </div>
 		         </div>
 		         </div>
