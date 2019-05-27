@@ -11,37 +11,60 @@ class Home extends Component{
       render(){
       	 return(
            <Fragment>
-           <main className="main-content-box">
-        	 <div className="flex main-content-wrapper">
-	        	 <div className="main-content">
-		        	 	 <div className="featured-tags">
-		        	 	  	   <div className="flex-wrap">
-		        	 	  	   	  <a className="tags-box featured-tags-box margin-botm-10 margin-ryt-10" href="#">Avengers</a>
-		        	 	  	   	  <a className="tags-box featured-tags-box margin-botm-10 margin-ryt-10" href="#">Game of Thrones</a>
-		        	 	  	   	  <a className="tags-box featured-tags-box margin-botm-10 margin-ryt-10" href="#">Donald Trump</a>
-							      <a className="tags-box featured-tags-box margin-botm-10 margin-ryt-10" href="#">
-							        Endgame
-							      </a>
-							      <a className="tags-box featured-tags-box margin-botm-10 margin-ryt-10" href="#">
-							        Trashtag
-							      </a>
-							      <a className="tags-box featured-tags-box margin-botm-10 margin-ryt-10" href="#">
-							        David Beckham
-							      </a>
-							      <a className="tags-box featured-tags-box margin-botm-10 margin-ryt-10" href="#">
-							        Kpop
-							      </a>
-							      <a className="tags-box featured-tags-box margin-botm-10 margin-ryt-10" href="#">
-							        Captain Marvel
-							      </a>
-							      <a className="tags-box featured-tags-box margin-botm-10 margin-ryt-10" href="#">
-							        Pokemon
-							      </a>
-		        	 	  	   </div>
-		        	 	 </div>
-				 </div>
-	        </div>
-           </main>
+	           <main className="main-content-box">
+	        	 <div className="main-content-wrapper">
+		         <div className="flex resume_section section-border resume_personal">
+                      <div className="uppercase">
+                      	  himanshu savita
+                      </div>
+                      <div className="txt-right">
+                      	  <div>8299852138</div>
+                      	  <div>Cras id dui. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, Bangalore, KA, 560017</div>
+                      	  <div>sunny@gmail.com</div>
+                      </div>
+		         </div>
+		         <div className="flex resume_section resume_summary">
+                      <div className="section_heading uppercase">
+                      	   professional summary
+                      </div>
+                      <div className="txt-right">
+                      	  <div>8299852138</div>
+                      	  <div>Cras id dui. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, Bangalore, KA, 560017</div>
+                      	  <div>sunny@gmail.com</div>
+                      </div>
+		         </div>
+		         <div className="flex resume_section resume_skills">
+                      <div className="section_heading uppercase">
+                      	  skills
+                      </div>
+                      <div className="txt-right">
+                      	  <div>8299852138</div>
+                      	  <div>Cras id dui. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, Bangalore, KA, 560017</div>
+                      	  <div>sunny@gmail.com</div>
+                      </div>
+		         </div>
+		         <div className="flex resume_section resume_work">
+                      <div className="section_heading uppercase">
+                      	  work history
+                      </div>
+                      <div className="txt-right">
+                      	  <div>8299852138</div>
+                      	  <div>Cras id dui. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, Bangalore, KA, 560017</div>
+                      	  <div>sunny@gmail.com</div>
+                      </div>
+		         </div>
+		         <div className="flex resume_section resume_education">
+                      <div className="section_heading uppercase">
+                      	  education
+                      </div>
+                      <div className="txt-right">
+                      	  <div>8299852138</div>
+                      	  <div>Cras id dui. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, Bangalore, KA, 560017</div>
+                      	  <div>sunny@gmail.com</div>
+                      </div>
+		         </div>
+		         </div>
+	           </main>
            </Fragment>
       	 )
       }

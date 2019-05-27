@@ -4,6 +4,8 @@ import CONFIG from './../config'
 
 import Template from './../template.js'
 
+import resumeController from './controllers/resume'
+
 const app = express();
 
 const CURRENT_WORKING_DIR = process.cwd();
@@ -27,6 +29,8 @@ app.use(function(req, res, next) {
 import devBundle from './devBundle'
 //comment out before building for production
 devBundle.compile(app)
+
+app.use('/api', resumeController(express.Router()));
 
 app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
 

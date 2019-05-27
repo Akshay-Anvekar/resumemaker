@@ -4,17 +4,22 @@ import {connect} from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import * as actions from '../actions'
 
-
 class Header extends Component{
       render(){
       	return(
           <Fragment>
                <header className="main-header">
-		      	  <div className="main-header-box">
-		      	  	 <div className="flex-center main-logo font-bold logo"><a href="#">MEMES</a></div>
-		      	  	 <div className="flex align-center main-header-account">
-	                         <a href="#" className="uppercase margin-ryt-30" data-model="#login_model" onClick={this.openModel}>Login</a>
-			      	  	 	 <div><button className="uppercase header-actions" data-model="#signup_model" onClick={this.openModel}>Signup</button></div>
+		      	  <div className="main-header-box capitalize">
+		      	  	 <div className="nav-list">
+		      	  	    <a href="#">personal</a>
+		      	  	    <a href="#">summary</a>
+		      	  	    <a href="#">skills</a>
+		      	  	    <a href="#">work</a>
+		      	  	    <a href="#">education</a>
+		      	  	 </div>
+		      	  	 <div className="nav-list">
+		      	  	    <a href="#">link</a>
+		      	  	    <a href="#">pdf</a>
 		      	  	 </div>
 		      	  </div>
 		       </header>
@@ -24,7 +29,6 @@ class Header extends Component{
 }
 
 export default connect(state=>state, actions)(Header);
-
 
 
 

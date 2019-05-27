@@ -8,6 +8,7 @@ export default () => {
             <meta name="viewport"  content="width=device-width initial-scale=1"/>
             <link rel="stylesheet" href="https://s3.amazonaws.com/assessts-book/css/impactwebfont.css">
             <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
             <link rel="stylesheet" href="/css/web-icons.css">
         </head>
         <body>
