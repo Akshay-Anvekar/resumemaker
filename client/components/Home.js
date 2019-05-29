@@ -4,23 +4,63 @@ import CONFIG from '../../config'
 import {connect} from 'react-redux'
 import * as actions from './actions'
 
+import CommonClass from './CommonClass'
 
-class Home extends Component{
+class Home extends CommonClass(Component){
 	  componentDidMount(){
 	  }
       render(){
       	 return(
            <Fragment>
+                       
+           		       <div className="model-backdrop display-none" id="user_model">
+		                      <div className="model-box">
+		                           <header className="flex">
+		                               <h3>personal information</h3>
+		                            <a href="#" data-model="#user_model" id="close_signupmodel" onClick={this.closeModel}>
+		                                <svg className="svg-icons-20 pointer" viewBox="0 0 612 612">
+		                                              <use href="/icons/sprites.svg#croos_icon" />
+		                                </svg>
+		                            </a>
+		                           </header>
+		                           <main>
+		                              <div className="margin-top-20">
+		                                  <div className="font-14 color-90949c">New section for post categorization</div>
+		                                  <form method="post" onSubmit={this.submitSignup}>
+		                                  <div className="margin-top-15">
+		                                         <input type="text" className="model-input font-14" name="edit_name" placeholder="Section value" />
+		                                     </div>
+		                                  <div className="margin-top-15">
+		                                         <input type="text" className="model-input font-14" name="edit_email" placeholder="Section describe" />
+		                                     </div>
+		                                     <div className="margin-top-15">
+		                                         <input type="text" className="model-input font-14" name="edit_pic" placeholder="Section url" />
+		                                     </div>
+		                                     <div className="margin-top-15 txt-center">
+		                                         <button className="uppercase btn btn-default">submit</button>
+		                                     </div>
+		                                  </form>
+		                              </div>
+		                           </main>
+		                           <footer></footer>
+		                      </div>
+		                </div>
+
+
+
 	           <main className="main-content-box">
 	        	 <div className="main-content-wrapper">
 		         <div className="resume_section section-border resume_personal">
                       <div className="name-section uppercase">
                       	  himanshu savita
                       </div>
-                      <div className="txt-right">
+                      <div className="txt-right margin-ryt-30">
                       	  <div>8299852138</div>
                       	  <div>Cras id dui. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, Bangalore, KA, 560017</div>
                       	  <div>sunny@gmail.com</div>
+                      </div>
+                      <div className="edit-section">
+                      	  <a href="#" className="color-edit"><i class="icon wb-edit"></i></a>
                       </div>
 		         </div>
 		         <div className="resume_section resume_summary">
@@ -30,13 +70,39 @@ class Home extends Component{
                       <div className="resume-content">
                       	  <div>Highly organized and meticulous Administrative Assistant with experience in corporate office settings.Adept at preparing and maintaining files, greeting visitors and restocking supplies. Good communicator and planner with strong judgment and critical thinking abilities.</div>
                       </div>
+                      <div className="edit-section">
+                      	  <a href="#" className="color-edit" data-model="#user_model" onClick={this.openModel}><i class="icon wb-edit"></i></a>
+                      </div>
 		         </div>
 		         <div className="resume_section resume_skills">
                       <div className="section_heading uppercase">
                       	  skills
                       </div>
                       <div className="resume-content">
-                      	  <div>Highly organized and meticulous Administrative Assistant with experience in corporate office settings.Adept at preparing and maintaining files, greeting visitors and restocking supplies. Good communicator and planner with strong judgment and critical thinking abilities.</div>
+                      	  <table className="skills-list-table">
+                      	      <tbody>
+                      	         <tr className="vertical-top">
+                      	         	<td>
+                      	         		<ul>
+			                      	         <li>Time management</li>
+			                      	      	 <li>Time Letter preparation</li>
+			                      	      	 <li>Correspondence handling</li>
+			                      	      	 <li>Multi-line phone proficiency</li>  			
+                      	         		</ul>
+                      	         	</td>
+                      	         	<td>
+                                       <ul>
+                                         <li>Documents filing</li>
+	                      	      	     <li>Multi-line phone proficiency</li>
+	                      	      	     <li>Filing and data archiving</li>
+                                       </ul>
+                      	         	</td>
+                      	         </tr>
+                      	      </tbody>
+                      	  </table>
+                      </div>
+                      <div className="edit-section">
+                      	  <a href="#" className="color-edit"><i class="icon wb-edit"></i></a>
                       </div>
 		         </div>
 		         <div className="resume_section resume_work">
@@ -144,6 +210,9 @@ class Home extends Component{
 	                          </div>
                            </div>
                       </div>
+                      <div className="edit-section">
+                      	  <a href="#" className="color-edit"><i class="icon wb-edit"></i></a>
+                      </div>
 		         </div>
 		         <div className="resume_section resume_education">
                       <div className="section_heading uppercase">
@@ -200,6 +269,9 @@ class Home extends Component{
                               </div>
                          <div className="education-info-box"></div>
                          <div className="education-info-box"></div>
+                      </div>
+                      <div className="edit-section">
+                      	  <a href="#" className="color-edit"><i class="icon wb-edit"></i></a>
                       </div>
 		         </div>
 		         </div>

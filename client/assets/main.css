@@ -51,6 +51,7 @@
      justify-content: space-between;
   }
   .resume_section{
+    position: relative;
     padding: 10px 0px;
     line-height: 1.5;
   }
@@ -82,7 +83,6 @@
   .inline-items>li{
      display: inline;
   }
-
   .seperator-dot::before{
     content: "\2022\0020";
     vertical-align: bottom;
@@ -94,6 +94,56 @@
   .work-info-box, .education-info-box{
      margin-top: 6px;
   }
+  .skills-list-table{
+    width: 100%;
+  }
+  .skills-list-table td{
+    width: 50%;
+  }
+  .skills-list-table ul{
+    list-style-type: none;
+  }
+  .edit-section{
+     position: absolute;
+     top:0; right:0;
+     padding: 10px 0;
+  }
+  .edit-section i{
+    font: normal normal normal 18px/1.5 'Web Icons' !important;
+  }
+
+
+      /*MODEL FADE*/
+    .model-backdrop{
+         position: fixed;
+         top:0;
+         left: 0;
+         width: 100%; /* Full width */
+         height: 100%;
+         z-index: 1050;
+         background-color: rgb(0,0,0); /* Fallback color */
+         background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+         transition: all .15s linear;
+    }
+    .model{
+      
+    }
+    .model-box{
+        max-width:500px;
+        padding: 20px 30px;
+        background: #fff;
+        margin: 30px auto;
+    }
+    .model-box header{
+         justify-content: space-between;
+    }
+    .model-input{
+      width: 100%;
+      padding: 10px;
+    }
+    /*END*/
+
+    
   /*LOADER*/
   #canvas-loader{
       display: inline-block;
@@ -165,6 +215,9 @@
   .color-success{
        color: #8BC34A;
   }
+  .color-edit{
+    color: #337ab7;
+  }
   .color-fff{
     color: #fff;
   }
@@ -218,6 +271,9 @@
 	.align-right{
 		align-items: right;
 	}
+  .vertical-top{
+     vertical-align: top;
+  }
 	.space-bw{
 		justify-content: space-between;	
 	}
