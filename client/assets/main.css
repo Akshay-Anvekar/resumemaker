@@ -129,21 +129,32 @@
       
     }
     .model-box{
-        max-width:500px;
-        padding: 20px 30px;
+        max-width: 550px;
+        padding: 25px 25px;
         background: #fff;
         margin: 30px auto;
     }
     .model-box header{
          justify-content: space-between;
     }
+    .model-form{
+      padding: 0 10px;
+    }
     .model-input{
       width: 100%;
-      padding: 10px;
+      padding: 10px 4px;
+      background-color: transparent;
+      border: 0;
+      border-bottom: 1px solid #cac2c2;
+      box-shadow: 0 1px 0 transparent;
+    }
+    .model-input:focus{
+      border-color: #1a82e2;
+      box-shadow: 0 1px 0 #1a82e2;
     }
     /*END*/
 
-    
+
   /*LOADER*/
   #canvas-loader{
       display: inline-block;
@@ -310,6 +321,9 @@
 	.margin-top-6{
 		margin-top: 6px;
 	}
+  .margin-top-5{
+    margin-top: 5px;
+  }
 	.margin-top-15{
       margin-top: 15px;
 	}
