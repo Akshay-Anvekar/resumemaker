@@ -226,6 +226,9 @@
   .color-success{
        color: #8BC34A;
   }
+  .back-success{
+     background: #8BC34A; 
+  }
   .color-edit{
     color: #337ab7;
   }

@@ -42,7 +42,7 @@ class Skills extends CommonClass(Component){
    		         <div className="model-backdrop display-none" id="skills_model">
                       <div className="model-box">
                            <header className="flex">
-                               <h3 className="uppercase">personal information</h3>
+                               <h3 className="uppercase">add skills</h3>
                             <a href="#" data-model="#skills_model" id="close_skillsmodel" onClick={this.closeModel}>
                                 <svg className="svg-icons-20 pointer" viewBox="0 0 612 612">
                                               <use href="/icons/sprites.svg#croos_icon" />
@@ -51,19 +51,13 @@ class Skills extends CommonClass(Component){
                            </header>
                            <main>
                               <div className="margin-top-5">
-                                  <div className="font-16 color-90949c">Update your basic information</div>
+                                  <div className="font-16 color-90949c">Update your skills</div>
                                   <form method="post"  className="model-form" onSubmit={this.submitSignup}>
                                   <div className="margin-top-15">
-                                       <input type="text" className="model-input font-16 capitalize" name="edit_name" placeholder="Your full name" />
+                                       <input type="text" className="model-input font-16 capitalize" name="edit_name" placeholder="List your skill" />
                                   </div>
                                   <div className="margin-top-15">
-                                       <input type="text" className="model-input font-16 capitalize" name="edit_email" placeholder="Your contact no" />
-                                  </div>
-                                  <div className="margin-top-15">
-                                       <input type="text" className="model-input font-16 capitalize" name="edit_pic" placeholder="Your current address" />
-                                  </div>
-                                  <div className="margin-top-15">
-                                       <input type="text" className="model-input font-16 capitalize" name="edit_pic" placeholder="Yout email" />
+                                      <button className="uppercase btn btn-default font-16"><i className="icon wb-plus padding-ryt-10"></i> add more skills</button>
                                   </div>
                                   <div className="margin-top-15 txt-center">
                                        <button className="uppercase btn btn-default font-16">save</button>
