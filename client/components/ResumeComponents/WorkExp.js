@@ -118,7 +118,7 @@ class WorkExp extends CommonClass(Component){
                       </div>
                </div>
    		         <div className="model-backdrop display-none" id="work_model">
-                      <div className="model-box">
+                      <div className="model-box model-width-700">
                            <header className="flex">
                                <h3 className="uppercase">personal information</h3>
                             <a href="#" data-model="#work_model" id="close_workmodel" onClick={this.closeModel}>
@@ -129,16 +129,15 @@ class WorkExp extends CommonClass(Component){
                            </header>
                            <main>
                               <div className="margin-top-5">
-                                  <div className="font-16 color-90949c">Update your basic information</div>
+                                  <div className="font-16 color-90949c">Update your work exprerience</div>
                                   <form method="post"  className="model-form" onSubmit={this.submitSignup}>
-                                  <div className="margin-top-15">
-                                       <input type="text" className="model-input font-16 capitalize" name="edit_name" placeholder="Your full name" />
+                                  <div className="flex space-bw margin-top-15">
+                                       <input type="text" className="model-input font-16 capitalize margin-ryt-25" name="edit_name" placeholder="Your designation" />
+                                       <input type="text" className="model-input font-16 capitalize" name="edit_email" placeholder="Your company" />
                                   </div>
-                                  <div className="margin-top-15">
-                                       <input type="text" className="model-input font-16 capitalize" name="edit_email" placeholder="Your contact no" />
-                                  </div>
-                                  <div className="margin-top-15">
-                                       <input type="text" className="model-input font-16 capitalize" name="edit_pic" placeholder="Your current address" />
+                                  <div className="flex space-bw margin-top-15">
+                                       <input type="text" className="model-input font-16 capitalize margin-ryt-25" name="edit_pic" placeholder="City" />
+                                       <input type="text" className="model-input font-16 capitalize" name="edit_pic" placeholder="State" />
                                   </div>
                                   <div className="margin-top-15">
                                        <input type="text" className="model-input font-16 capitalize" name="edit_pic" placeholder="Yout email" />

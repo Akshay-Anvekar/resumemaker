@@ -111,7 +111,10 @@
   .edit-section i{
     font: normal normal normal 18px/1.5 'Web Icons' !important;
   }
-
+  .addskills-container{
+        max-height: 350px;
+        overflow-y: scroll;
+  }
 
       /*MODEL FADE*/
     .model-backdrop{
@@ -215,8 +218,11 @@
   }
   /* END  */
 /*END LOADER*/
-
+  
 	/*HELPER CLASS*/
+  .model-width-700{
+     max-width: 700px;
+  }
   .color-90949c{
        color: #90949c;
   }
@@ -303,6 +309,9 @@
 	.margin-ryt-30{
 		 margin-right: 30px;
 	}
+  .margin-ryt-25{
+     margin-right: 25px; 
+  }
 	.margin-ryt-10{
 		 margin-right: 10px;
 	}
@@ -315,6 +324,9 @@
 	.margin-botm-10{
 		 margin-bottom: 10px;
 	}
+  .margin-botm-15{
+     margin-bottom: 15px;
+  }
 	.margin-botm-5{
 		margin-bottom: 5px;
 	}
@@ -372,6 +384,9 @@
 	.font-16{
 		font-size: 16px;
 	}
+  .font-18{
+    font-size: 18px;
+  }
 	.font-12{
 		font-size: 12px;
 	}

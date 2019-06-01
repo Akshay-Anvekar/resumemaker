@@ -20,5 +20,13 @@ export default (Component)=>{
 	           for(let x of a)
 	               x.value = '';
 	      }
+	      randomString = ()=>Math.random().toString(36).substring(7);
+	      removeGeneratedTag = (e, arr, value, stateValue)=>{
+	      	    e.preventDefault();
+	      	    if(arr.length>1){
+                   arr =  arr.filter((x)=>x!==value)
+	      	    }
+                this.setState({ [stateValue]: arr })
+	      }
 	 }
 }

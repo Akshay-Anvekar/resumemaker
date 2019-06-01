@@ -5,6 +5,17 @@ import {connect} from 'react-redux'
 import * as actions from '../actions'
 
 class Skills extends CommonClass(Component){
+      state = {
+         addSkillsBox : []
+      }
+      addMoreSkills = (e)=>{
+         e.preventDefault();
+         const addedId = this.state.addSkillsBox;
+         addedId.push(this.randomString())
+         this.setState({
+             addSkillsBox: addedId
+         });
+      }
       render(){
       	 return(
            <Fragment>
@@ -51,13 +62,22 @@ class Skills extends CommonClass(Component){
                            </header>
                            <main>
                               <div className="margin-top-5">
-                                  <div className="font-16 color-90949c">Update your skills</div>
+                                  <div className="font-16 margin-botm-5 color-90949c">Update your skills</div>
                                   <form method="post"  className="model-form" onSubmit={this.submitSignup}>
-                                  <div className="margin-top-15">
-                                       <input type="text" className="model-input font-16 capitalize" name="edit_name" placeholder="List your skill" />
+                                  <div className="addskills-container">
+                                  {this.state.addSkillsBox.length>0 && 
+                                   this.state.addSkillsBox.map((result)=>{
+                                        return (
+                                            <div className="flex space-bw align-center margin-botm-15" key={result}>
+                                                 <input type="text" className="model-input font-16 capitalize" name={result} id={result} placeholder="List your skill" />
+                                                 <span className="margin-lft-10"><a href="#" className="" onClick={(e)=>this.removeGeneratedTag(e, this.state.addSkillsBox, result, 'addSkillsBox')}><i className="icon wb-trash font-18"></i></a></span>
+                                            </div>
+                                        )
+                                   })
+                                  }
                                   </div>
                                   <div className="margin-top-15">
-                                      <button className="uppercase btn btn-default font-16"><i className="icon wb-plus padding-ryt-10"></i> add more skills</button>
+                                      <button className="uppercase btn btn-default font-16" onClick={(e)=>this.addMoreSkills(e)}><i className="icon wb-plus padding-ryt-10"></i> add more skills</button>
                                   </div>
                                   <div className="margin-top-15 txt-center">
                                        <button className="uppercase btn btn-default font-16">save</button>
