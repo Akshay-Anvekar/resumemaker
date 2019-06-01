@@ -70,7 +70,7 @@ class Skills extends CommonClass(Component){
                                         return (
                                             <div className="flex space-bw align-center margin-botm-15" key={result}>
                                                  <input type="text" className="model-input font-16 capitalize" name={result} id={result} placeholder="List your skill" />
-                                                 <span className="margin-lft-10"><a href="#" className="" onClick={(e)=>this.removeGeneratedTag(e, this.state.addSkillsBox, result, 'addSkillsBox')}><i className="icon wb-trash font-18"></i></a></span>
+                                                 <span className="margin-lft-10"><a href="#" className="" onClick={(e)=>this.removeGeneratedTag(e, this.state.addSkillsBox, result, 'addSkillsBox')}><i className="icon wb-trash color-trash font-18"></i></a></span>
                                             </div>
                                         )
                                    })
