@@ -116,50 +116,30 @@
      overflow-y: scroll;
   }
   .company-list-box{
-      padding: 0 10px 30px 10px;
+     padding: 0 10px 15px 10px;
+     margin-left: 10px;
+    margin-right: 10px;
   }
   .list-exps{
      max-height: 498px;
      overflow-y: scroll;
      scroll-behavior: smooth;
   }
-/*  .list-exps::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-    background-color: #ebebeb;
-    border-radius: 20px;
-  };
- 
-  .list-exps::-webkit-scrollbar-track {
-    background-color: #f5f5f5;
-    border-radius: 20px;
-  }*/
-
-.list-exps::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-    background-color: #ebebeb;
-    border-radius: 20px;
-}
- 
-.list-exps::-webkit-scrollbar-track {
-    background-color: #f5f5f5;
-    border-radius: 20px;
-}
- 
-.list-exps::-webkit-scrollbar-thumb {
-  background-color: #0d58c8;
-}
-
- /* .emoji-tooptips::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: px;
+  .list-exps::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+      background-color: #ebebeb;
+      border-radius: 20px;
   }
-.emoji-tooptips::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background-color: rgba(0, 0, 0, .3);
-  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
-}*/
+   
+  .list-exps::-webkit-scrollbar-track {
+      background-color: #f5f5f5;
+      border-radius: 20px;
+  }
+   
+  .list-exps::-webkit-scrollbar-thumb {
+    background-color: #0d58c8;
+  }
 
       /*MODEL FADE*/
     .model-backdrop{
@@ -265,6 +245,9 @@
 /*END LOADER*/
   
 	/*HELPER CLASS*/
+  .width-90pr{
+     width: 90%;
+  }
   .model-width-700{
      max-width: 700px;
   }
@@ -402,6 +385,9 @@
 	.padding-top-5{
 		 padding-top: 5px;
 	}
+  .padding-top-10{
+     padding-top: 10px;
+  }
 	.padding-botm-10{
 		 padding-bottom: 10px;
 	}

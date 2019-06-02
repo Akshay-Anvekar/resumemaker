@@ -10,15 +10,23 @@ class WorkExp extends CommonClass(Component){
          addNewCompany : []
       }
       componentDidMount(){
-         this.addMoreWorkExp();
          this.addMoreCompanies();
+         this.addMoreWorkExp();
       }
-      addMoreWorkExp = ()=>{
-         const addedId = this.state.addExpBox;
+      addMoreWorkExp = (e)=>{
+         let parent = null, addedId = null;
+         if(e){
+            parent = e.currentTarget.dataset.parent;
+            addedId = this.state[parent];
+         }else{
+            parent = this.state.addNewCompany[this.state.addNewCompany.length-1];
+            addedId = [];
+         }
          addedId.push(this.randomString())
          this.setState({
-             addExpBox: addedId
+            [parent]: addedId
          });
+         document.getElementById('list_exps').scrollTop = parseInt(document.getElementById('list_exps').scrollHeight);
          return false;
       }
       addMoreCompanies = async ()=>{
@@ -27,7 +35,7 @@ class WorkExp extends CommonClass(Component){
          await this.setState({
              addNewCompany: addedId
          });
-         document.getElementById('list_exps').scrollTop = document.getElementById('list_exps').scrollHeight;
+         this.addMoreWorkExp();
          return false;   
       }
       onFormSubmit(){
@@ -163,7 +171,7 @@ class WorkExp extends CommonClass(Component){
                                        {this.state.addNewCompany.length>0 &&
                                         this.state.addNewCompany.map((company_result)=>{
                                              return (
-                                                 <div className="company-list-box border-botm-light">
+                                                 <div className="company-list-box border-botm-light" key={company_result}>
                                                       <div className="flex space-bw margin-top-15">
                                                              <input type="text" className="model-input font-16 capitalize margin-ryt-25" name="edit_name" placeholder="Your designation" />
                                                              <input type="text" className="model-input font-16 capitalize" name="edit_email" placeholder="Your company" />
@@ -173,19 +181,19 @@ class WorkExp extends CommonClass(Component){
                                                              <input type="text" className="model-input font-16 capitalize" name="edit_pic" placeholder="State" />
                                                         </div>
                                                         <div className="addskills-container">
-                                                          {this.state.addExpBox.length>0 && 
-                                                           this.state.addExpBox.map((result)=>{
+                                                          {this.state[company_result] && this.state[company_result].length>0 && 
+                                                           this.state[company_result].map((result)=>{
                                                                 return (
                                                                     <div className="flex space-bw align-center margin-top-15" key={result}>
                                                                          <input type="text" className="model-input font-16 capitalize" name={result} id={result} placeholder="Work details" />
-                                                                         <span className="margin-lft-10"><a className="" onClick={(e)=>this.removeGeneratedTag(e, this.state.addExpBox, result, 'addExpBox')}><i className="icon wb-trash color-trash font-18"></i></a></span>
+                                                                         <span className="margin-lft-10"><a className="" onClick={(e)=>this.removeGeneratedTag(e, this.state[company_result], result, company_result)}><i className="icon wb-trash color-trash font-18"></i></a></span>
                                                                     </div>
                                                                 )
                                                            })
                                                           }
                                                         </div>
                                                         <div className="margin-top-15">
-                                                            <button type="button" className="uppercase btn btn-default font-16" onClick={this.addMoreWorkExp}><i className="icon wb-plus padding-ryt-10"></i> add more about your role</button>
+                                                            <button type="button" className="uppercase btn btn-default font-16" data-parent={company_result} onClick={this.addMoreWorkExp}><i className="icon wb-plus padding-ryt-10"></i> add more about your role</button>
                                                         </div>
                                                   </div>
                                              )
