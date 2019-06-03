@@ -11,7 +11,7 @@ export default {
 	  	 },
 	  	 address: {
 	  	 	 primary: 'Cras id dui. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, Bangalore, KA, 560017',
-	  	 	 secondry: ''
+	  	 	 secondry: 'Cras id dui. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, Bangalore, KA, 560017'
 	  	 }
 	  },
 	  summary: 'Highly organized and meticulous Administrative Assistant with experience in corporate office settings.Adept at preparing and maintaining files, greeting visitors and restocking supplies. Good communicator and planner with strong judgment and critical thinking abilities.',

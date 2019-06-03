@@ -1,4 +1,4 @@
-import {AUTH_USER, ADD_USER, LOGIN_USER, LOGOUT_USER, SECTIONS_LIST, POSTS_LIST, DEFAULT_STATE, EMOJIS_LIST} from '../actions/types'
+import {UPDATE_RESUME} from '../actions/types'
 
 // export const authReducer = (state=false, action)=>{
 // 	   switch(action.type){
@@ -12,16 +12,8 @@ import {AUTH_USER, ADD_USER, LOGIN_USER, LOGOUT_USER, SECTIONS_LIST, POSTS_LIST,
 
 export const updateResume = (state=null, action)=>{
 		switch(action.type){
-	   	   case LOGIN_USER:
+	   	   case UPDATE_RESUME:
 	   	     return action.payload;
-	   	   case AUTH_USER:
-	   	     return action.payload;
-            break;
-           case LOGOUT_USER:
-	   	     return action.payload;
-           case ADD_USER:
-	   	     return action.payload;
-            break;
 	   	   default: 
 	   	    return state;
 	    }

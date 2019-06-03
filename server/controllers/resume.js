@@ -1,5 +1,5 @@
 import puppeteer from 'puppeteer'
-
+import Resume from '../models/resume'
 
 export default (router)=>{
     router.get('/download-resume', async (req, res)=>{
@@ -11,5 +11,15 @@ export default (router)=>{
 		res.set({ 'Content-Type': 'application/pdf', 'Content-Length': pdf.length })
 	    res.send(pdf)      
     });   
+    router.get('/check-resume', async (req, res)=>{
+    	const obj = {
+    		 personal: {
+    		 	name : 'himanshu'
+    		 }
+    	}
+        const resume = new Resume(obj)
+        const result = await resume.save();
+        res.send({result});
+    })
     return router;
 }

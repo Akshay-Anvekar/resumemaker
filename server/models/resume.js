@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import crypto from 'crypto';
-import CONFIG from '../../config/resume_sample';
-const {DB} = CONFIG;
+import SAMPLE_RESUME from '../../config/resume_sample';
+// const {DB} = CONFIG;
 
 const ResumeSchema = new mongoose.Schema({
       personal :{
@@ -9,20 +9,23 @@ const ResumeSchema = new mongoose.Schema({
             type: String,
             trim:true,
             required : true,
-            unique: true
+            unique: true,
+            default: SAMPLE_RESUME.personal.name
           },
           email: {
               primary: {
                 type: String,
                 trim: true,
                 required : true,
-                unique: true
+                unique: true,
+                default: SAMPLE_RESUME.personal.email.primary
               },
               secondry: {
                 type: String,
                 trim: true,
                 required : true,
-                unique: true
+                unique: true,
+                default: SAMPLE_RESUME.personal.email.secondry
               }
           },
           phone: {
@@ -30,48 +33,67 @@ const ResumeSchema = new mongoose.Schema({
                 type: String,
                 trim: true,
                 required : true,
-                unique: true
+                unique: true,
+                default: SAMPLE_RESUME.personal.phone.secondry
               },
               secondry: {
                 type: String,
                 trim: true,
                 required : true,
-                unique: true
+                unique: true,
+                default: SAMPLE_RESUME.personal.phone.secondry
               }
           },
           address: {
-            type: String,
-            trim:true
+              primary: {
+                type: String,
+                trim: true,
+                required : true,
+                unique: true,
+                default: SAMPLE_RESUME.personal.address.primary
+              },
+              secondry: {
+                type: String,
+                trim: true,
+                required : true,
+                unique: true,
+                default: SAMPLE_RESUME.personal.address.secondry
+              }
           }
       },
       summary: {
         type: String,
-        trim: true
-      }
+        trim: true,
+        default: SAMPLE_RESUME.summary
+      },
       skills :[
         {
            type: String,
-           trim: true
+           trim: true,
+           default: SAMPLE_RESUME.skills
         }
       ],
-      workexp: [
-         {
-          designation: {type: String, trim: true, lowercase: true},
-          company: {type: String, trim: true, lowercase: true},
-          city: {type: String, trim: true, lowercase: true}, state: {type: String, trim: true, lowercase: true},
-          start: {type: String, trim: true, lowercase: true}, end: {type: String, trim: true, lowercase: true},
-          details: [
-             {type: String, trim: true, lowercase: true}
-          ],
-         }
-      ],
-      education: [
-         {
-            degree: {type: String, trim: true, lowercase: true},
-            college: {type: String, trim: true, lowercase: true}, 'university': {type: String, trim: true, lowercase: true},
-            state: {type: String, trim: true, lowercase: true}, passedout: {type: String, trim: true, lowercase: true}
-         }
-      ],
+      // workexp: [
+      //    {
+      //     // designation: {type: String, trim: true, lowercase: true},
+      //     // company: {type: String, trim: true, lowercase: true},
+      //     // city: {type: String, trim: true, lowercase: true}, state: {type: String, trim: true, lowercase: true},
+      //     // start: {type: String, trim: true, lowercase: true}, end: {type: String, trim: true, lowercase: true},
+      //     // details: [
+      //     //    {type: String, trim: true, lowercase: true}
+      //     // ],
+      //     default: SAMPLE_RESUME.workExp
+      //    }
+      // ],
+      // education: [
+      //    {
+      //       // degree: {type: String, trim: true, lowercase: true},
+      //       // college: {type: String, trim: true, lowercase: true}, 'university': {type: String, trim: true, lowercase: true},
+      //       // state: {type: String, trim: true, lowercase: true}, passedout: {type: String, trim: true, lowercase: true}
+      //       default: SAMPLE_RESUME.education
+      //    },
+
+      // ],
       profile_pic:{
             thumbnail: {
                   url : { type: String },
