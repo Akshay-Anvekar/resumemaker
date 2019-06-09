@@ -2,12 +2,17 @@ import {UPDATE_RESUME} from './types'
 import CONFIG from '../../../config'
 import axios from 'axios'
 
-export const updateResume = ()=>{
-       return (dispatch)=>{
+export const updateResume = (formdata, info_type, cb)=>{
+
+       return async (dispatch)=>{
+        console.log(formdata)
+           const {data} = await axios.post('/api/update-resume', {...formdata, info_type});
+           console.log(data); 
            dispatch({
               type: UPDATE_RESUME,
               payload: null
            })
+           cb();
        }
 }
 // export const authUser = (user)=>{

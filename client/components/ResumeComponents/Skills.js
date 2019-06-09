@@ -6,15 +6,40 @@ import * as actions from '../actions'
 
 class Skills extends CommonClass(Component){
       state = {
-         addSkillsBox : []
+         addSkillsBox : [], loading : 0, success :0
       }
-      addMoreSkills = (e)=>{
-         e.preventDefault();
+      componentDidMount(){
+        this.addMoreSkills();
+      }
+      addMoreSkills = async (e)=>{
+         if(e){
+            e.preventDefault();
+         }
          const addedId = this.state.addSkillsBox;
          addedId.push(this.randomString())
-         this.setState({
+         await this.setState({
              addSkillsBox: addedId
          });
+         document.getElementById('addskills_container').scrollTop = parseInt(document.getElementById('addskills_container').scrollHeight);
+      }
+      onSubmitForm = (e)=>{
+             e.preventDefault();
+             const user_skills = this.state.addSkillsBox;
+             const user_skills_values = user_skills.map((res)=>{
+                 return e.target.elements[res].value;
+             });
+             // if(!this.validateInputs(e.target.elements, {user_name, user_email, user_phone})){
+             //    return;
+             // }
+             console.log(user_skills_values);
+             this.setState({loading: 1})
+             this.props.updateResume({user_skills: user_skills_values}, 2, ()=>{
+                  this.setState({success:1})
+                  setTimeout(()=>{
+                    this.closeAllModel();
+                    this.setState({loading: 0, success: 0})
+                  }, 1500)
+             });
       }
       render(){
       	 return(
@@ -52,9 +77,19 @@ class Skills extends CommonClass(Component){
                </div>
    		         <div className="model-backdrop display-none" id="skills_model">
                       <div className="model-box">
+                          {this.state.loading==1 &&                            
+                             <div className="loading-cover">
+                              {this.state.success==1
+                                  ? <svg className="svg-success-80" viewBox="0 0 426.667 426.667">
+                                                <use href="/icons/sprites.svg#success_completed" />
+                                    </svg>
+                                  : <img className="svg-icons-loading" src="/icons/loading.svg"/>
+                              }
+                             </div>
+                           }
                            <header className="flex">
                                <h3 className="uppercase">add skills</h3>
-                            <a href="#" data-model="#skills_model" id="close_skillsmodel" onClick={this.closeModel}>
+                            <a href="#" data-model="#skills_model" className="close-model" id="close_skillsmodel" onClick={this.closeModel}>
                                 <svg className="svg-icons-20 pointer" viewBox="0 0 612 612">
                                               <use href="/icons/sprites.svg#croos_icon" />
                                 </svg>
@@ -63,8 +98,8 @@ class Skills extends CommonClass(Component){
                            <main>
                               <div className="margin-top-5">
                                   <div className="font-16 margin-botm-5 color-90949c">Update your skills</div>
-                                  <form method="post"  className="model-form" onSubmit={this.submitSignup}>
-                                  <div className="addskills-container">
+                                  <form method="post" onSubmit={this.onSubmitForm}>
+                                  <div className="addskills-container padding-ryt-lft-10 scroll-view" id="addskills_container">
                                   {this.state.addSkillsBox.length>0 && 
                                    this.state.addSkillsBox.map((result)=>{
                                         return (
@@ -76,11 +111,11 @@ class Skills extends CommonClass(Component){
                                    })
                                   }
                                   </div>
-                                  <div className="margin-top-15">
+                                  <div className="margin-top-15 padding-ryt-lft-10">
                                       <button className="uppercase btn btn-default font-16" onClick={(e)=>this.addMoreSkills(e)}><i className="icon wb-plus padding-ryt-10"></i> add more skills</button>
                                   </div>
                                   <div className="margin-top-15 txt-center">
-                                       <button className="uppercase btn btn-default font-16">save</button>
+                                       <button type="submit" className="uppercase btn btn-default font-16">save</button>
                                   </div>
                                   </form>
                               </div>

@@ -4,61 +4,50 @@ import SAMPLE_RESUME from '../../config/resume_sample';
 // const {DB} = CONFIG;
 
 const ResumeSchema = new mongoose.Schema({
-      personal :{
-          name: {
+      name: {
+        type: String,
+        trim:true,
+        required : true,
+        default: SAMPLE_RESUME.personal.name
+      },
+      email: {
+          primary: {
             type: String,
-            trim:true,
+            trim: true,
             required : true,
-            unique: true,
-            default: SAMPLE_RESUME.personal.name
+            default: SAMPLE_RESUME.personal.email.primary
           },
-          email: {
-              primary: {
-                type: String,
-                trim: true,
-                required : true,
-                unique: true,
-                default: SAMPLE_RESUME.personal.email.primary
-              },
-              secondry: {
-                type: String,
-                trim: true,
-                required : true,
-                unique: true,
-                default: SAMPLE_RESUME.personal.email.secondry
-              }
+          secondry: {
+            type: String,
+            trim: true,
+            required : true,
+            default: SAMPLE_RESUME.personal.email.secondry
+          }
+      },
+      phone: {
+          primary: {
+            type: String,
+            trim: true,
+            required : true,
+            default: SAMPLE_RESUME.personal.phone.secondry
           },
-          phone: {
-              primary: {
-                type: String,
-                trim: true,
-                required : true,
-                unique: true,
-                default: SAMPLE_RESUME.personal.phone.secondry
-              },
-              secondry: {
-                type: String,
-                trim: true,
-                required : true,
-                unique: true,
-                default: SAMPLE_RESUME.personal.phone.secondry
-              }
+          secondry: {
+            type: String,
+            trim: true,
+            required : true,
+            default: SAMPLE_RESUME.personal.phone.secondry
+          }
+      },
+      address: {
+          primary: {
+            type: String,
+            trim: true,
+            default: SAMPLE_RESUME.personal.address.primary
           },
-          address: {
-              primary: {
-                type: String,
-                trim: true,
-                required : true,
-                unique: true,
-                default: SAMPLE_RESUME.personal.address.primary
-              },
-              secondry: {
-                type: String,
-                trim: true,
-                required : true,
-                unique: true,
-                default: SAMPLE_RESUME.personal.address.secondry
-              }
+          secondry: {
+            type: String,
+            trim: true,
+            default: SAMPLE_RESUME.personal.address.secondry
           }
       },
       summary: {
@@ -66,13 +55,10 @@ const ResumeSchema = new mongoose.Schema({
         trim: true,
         default: SAMPLE_RESUME.summary
       },
-      skills :[
-        {
-           type: String,
-           trim: true,
-           default: SAMPLE_RESUME.skills
-        }
-      ],
+      skills :{
+          type: Array,
+          default: SAMPLE_RESUME.skills
+      },
       // workexp: [
       //    {
       //     // designation: {type: String, trim: true, lowercase: true},

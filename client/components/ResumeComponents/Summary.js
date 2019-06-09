@@ -5,6 +5,24 @@ import {connect} from 'react-redux'
 import * as actions from '../actions'
 
 class Summary extends CommonClass(Component){
+      state = {
+         loading : 0, success :0
+      }
+      onSubmitForm = (e)=>{
+             e.preventDefault();
+             const user_summary = e.target.elements.user_summary.value;
+             if(!this.validateInputs(e.target.elements, {user_summary})){
+                return;
+             }
+             this.setState({loading: 1})
+             this.props.updateResume({user_summary}, 1, ()=>{
+                  this.setState({success:1})
+                  setTimeout(()=>{
+                    this.closeAllModel();
+                    this.setState({loading: 0, success: 0})
+                  }, 1500)
+             });
+      }
       render(){
       	 return(
            <Fragment>
@@ -21,9 +39,19 @@ class Summary extends CommonClass(Component){
              </div>
    		         <div className="model-backdrop display-none" id="summary_modal">
                       <div className="model-box">
+                          {this.state.loading==1 &&                            
+                               <div className="loading-cover">
+                                {this.state.success==1
+                                  ? <svg className="svg-success-80" viewBox="0 0 426.667 426.667">
+                                                <use href="/icons/sprites.svg#success_completed" />
+                                    </svg>
+                                  : <img className="svg-icons-loading" src="/icons/loading.svg"/>
+                              }
+                               </div>
+                           }
                            <header className="flex">
                                <h3 className="uppercase">professional summary</h3>
-                            <a href="#" data-model="#summary_modal" id="close_summary_modal" onClick={this.closeModel}>
+                            <a href="#" data-model="#summary_modal" className="close-model" id="close_summary_modal" onClick={this.closeModel}>
                                 <svg className="svg-icons-20 pointer" viewBox="0 0 612 612">
                                               <use href="/icons/sprites.svg#croos_icon" />
                                 </svg>
@@ -32,12 +60,12 @@ class Summary extends CommonClass(Component){
                            <main>
                               <div className="margin-top-5">
                                   <div className="font-16 color-90949c">Update your professional summary</div>
-                                  <form method="post"  className="model-form" onSubmit={this.submitSignup}>
+                                  <form method="post"  className="model-form" onSubmit={this.onSubmitForm}>
                                   <div className="margin-top-15">
-                                       <input type="text" className="model-input font-16 capitalize" name="edit_name" placeholder="Your full name" />
+                                       <input type="text" className="model-input font-16" name="user_summary" placeholder="Explain a little bit about your role" />
                                   </div>
                                   <div className="margin-top-15 txt-center">
-                                       <button className="uppercase btn btn-default font-16">save</button>
+                                       <button type="submit" className="uppercase btn btn-default font-16">save</button>
                                   </div>
                                   </form>
                               </div>

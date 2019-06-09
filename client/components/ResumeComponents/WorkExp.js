@@ -157,7 +157,7 @@ class WorkExp extends CommonClass(Component){
                       <div className="model-box model-width-700">
                            <header className="flex">
                                <h3 className="uppercase">professional information</h3>
-                               <a href="#" data-model="#work_model" id="close_workmodel" onClick={this.closeModel}>
+                               <a href="#" data-model="#work_model" className="close-model" id="close_workmodel" onClick={this.closeModel}>
                                  <svg className="svg-icons-20 pointer" viewBox="0 0 612 612">
                                               <use href="/icons/sprites.svg#croos_icon" />
                                  </svg>
@@ -167,7 +167,7 @@ class WorkExp extends CommonClass(Component){
                               <div className="margin-top-5">
                                   <div className="font-16 margin-botm-5 color-90949c">Update your work exprerience</div>
                                   <form method="post" onSubmit={this.onFormSubmit}>
-                                   <div className="list-exps" id="list_exps">
+                                   <div className="list-exps scroll-view" id="list_exps">
                                        {this.state.addNewCompany.length>0 &&
                                         this.state.addNewCompany.map((company_result)=>{
                                              return (

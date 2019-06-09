@@ -1,6 +1,13 @@
 import express from 'express'
 import path from 'path'
 import CONFIG from './../config'
+import bodyParser from 'body-parser'
+import mongoose from 'mongoose'
+mongoose.Promise = global.Promise
+mongoose.connect(CONFIG.mongoURI, { useNewUrlParser: true });
+mongoose.connection.on('error', ()=>{
+   throw new Error('unable to connect to database')
+})
 
 import Template from './../template.js'
 
@@ -9,6 +16,9 @@ import resumeController from './controllers/resume'
 const app = express();
 
 const CURRENT_WORKING_DIR = process.cwd();
+
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }))
+app.use(bodyParser.json({limit: '10mb', extended: true}))
 
 app.use(express.static(path.join(CURRENT_WORKING_DIR, 'public')));
 

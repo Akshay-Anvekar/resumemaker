@@ -1,6 +1,7 @@
 export default {
   env: process.env.NODE_ENV || 'development',
   port: process.env.PORT || 8080,
+  mongoURI : 'mongodb+srv://feelfunny:feelfunny123@feelfunny-jfu4v.mongodb.net/test?retryWrites=true',
   API_URL: "http://localhost:3000",
   ACCESS_TOKEN : "0z6v8b4uua",
   ERROR: {
