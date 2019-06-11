@@ -44,6 +44,9 @@ export default (router)=>{
         if(req.body.info_type==2){  //2 - SKILLS
         	  resumeObject['skills'] = req.body.user_skills? req.body.user_skills : '';
         }
+        if(req.body.info_type==3){  //3 - EXPERIENCE
+        	  resumeObject['workexp'] = req.body.user_exp? req.body.user_exp : [];
+        }
         try{
 	        const resume = new Resume(resumeObject)
 	        const result = await resume.save();

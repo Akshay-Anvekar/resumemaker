@@ -1,13 +1,17 @@
 import React, {Component, Fragment} from 'react';
+import Calendar from 'react-calendar'
 import CommonClass from '../CommonClass'
 import CONFIG from '../../../config'
 import {connect} from 'react-redux'
+
 import * as actions from '../actions'
 
 class WorkExp extends CommonClass(Component){
       state = {
          addExpBox : [],
-         addNewCompany : []
+         addNewCompany : [],
+         date: new Date(),
+         loading : 0, success :0
       }
       componentDidMount(){
          this.addMoreCompanies();
@@ -38,8 +42,64 @@ class WorkExp extends CommonClass(Component){
          this.addMoreWorkExp();
          return false;   
       }
-      onFormSubmit(){
-          return false;
+
+
+        //      {
+        //   designation: 'Administrative Assistant',
+        //   company: 'company A',
+        //   city: 'San Francisco', state: 'CA',
+        //   start: '02/2017', end: 'Current',
+        //   details: [
+        //       'Screened all visitors and directed them to the correct employee or office.',
+        // 'Facilitated organized record retrieval and access.',
+        // 'Organized all new hire, security and temporary paperwork.'
+        //   ],
+        //  },
+
+
+      onSubmitForm = (e)=>{
+             e.preventDefault();
+             const {elements} = e.target;
+             console.log(elements)
+             const userExperience = [],
+                   companies_ids = this.state.addNewCompany;
+             for(let x of companies_ids){
+                 let workexpObject = {};
+                 let currentWorkDetails = [];
+                 workexpObject['designation'] = elements[`designation_${x}`].value; 
+                 workexpObject['company'] = elements[`company_${x}`].value; 
+                 workexpObject['city'] = elements[`city_${x}`].value; 
+                 workexpObject['state'] = elements[`state_${x}`].value; 
+                 workexpObject['start'] = elements[`start_${x}`].value; 
+                 workexpObject['end'] = elements[`end_${x}`].value; 
+                 for(let y of this.state[x]){
+                     currentWorkDetails.push(elements[y].value);
+                 } 
+                 workexpObject['details'] = currentWorkDetails;
+                 userExperience.push(workexpObject);
+             }
+             console.log(userExperience);
+             // const user_skills = this.state.addSkillsBox;
+             // const user_skills_values = user_skills.map((res)=>{
+             //     return e.target.elements[res].value;
+             // });
+             // // if(!this.validateInputs(e.target.elements, {user_name, user_email, user_phone})){
+             // //    return;
+             // // }
+             // console.log(user_skills_values);
+             this.setState({loading: 1})
+             this.props.updateResume({user_exp: userExperience}, 3, ()=>{
+                  this.setState({success:1})
+                  setTimeout(()=>{
+                    this.closeAllModel();
+                    this.setState({loading: 0, success: 0})
+                  }, 1500)
+             });
+      }
+      onChange = async (date) => {
+        console.log(new Date(date));
+        await this.setState({ date });
+        console.log((this.state.date).getTime())
       }
       render(){
       	 return(
@@ -155,6 +215,16 @@ class WorkExp extends CommonClass(Component){
                </div>
    		         <div className="model-backdrop display-none" id="work_model">
                       <div className="model-box model-width-700">
+                          {this.state.loading==1 &&                            
+                              <div className="loading-cover">
+                                {this.state.success==1
+                                  ? <svg className="svg-success-80" viewBox="0 0 426.667 426.667">
+                                                <use href="/icons/sprites.svg#success_completed" />
+                                    </svg>
+                                  : <img className="svg-icons-loading" src="/icons/loading.svg"/>
+                                }
+                              </div>
+                           }
                            <header className="flex">
                                <h3 className="uppercase">professional information</h3>
                                <a href="#" data-model="#work_model" className="close-model" id="close_workmodel" onClick={this.closeModel}>
@@ -166,20 +236,32 @@ class WorkExp extends CommonClass(Component){
                            <main>
                               <div className="margin-top-5">
                                   <div className="font-16 margin-botm-5 color-90949c">Update your work exprerience</div>
-                                  <form method="post" onSubmit={this.onFormSubmit}>
+                                  <form method="post" onSubmit={this.onSubmitForm}>
                                    <div className="list-exps scroll-view" id="list_exps">
                                        {this.state.addNewCompany.length>0 &&
                                         this.state.addNewCompany.map((company_result)=>{
                                              return (
                                                  <div className="company-list-box border-botm-light" key={company_result}>
                                                       <div className="flex space-bw margin-top-15">
-                                                             <input type="text" className="model-input font-16 capitalize margin-ryt-25" name="edit_name" placeholder="Your designation" />
-                                                             <input type="text" className="model-input font-16 capitalize" name="edit_email" placeholder="Your company" />
+                                                             <input type="text" className="model-input font-16 capitalize margin-ryt-25" name={`designation_${company_result}`} placeholder="Your designation" />
+                                                             <input type="text" className="model-input font-16 capitalize" name={`company_${company_result}`} placeholder="Your company" />
                                                         </div>
                                                         <div className="flex space-bw margin-top-15">
-                                                             <input type="text" className="model-input font-16 capitalize margin-ryt-25" name="edit_pic" placeholder="City" />
-                                                             <input type="text" className="model-input font-16 capitalize" name="edit_pic" placeholder="State" />
+                                                             <input type="text" className="model-input font-16 capitalize margin-ryt-25" name={`city_${company_result}`}  placeholder="City" />
+                                                             <input type="text" className="model-input font-16 capitalize" name={`state_${company_result}`} placeholder="State" />
                                                         </div>
+                                                        <div className="flex space-bw margin-top-15">
+                                                          <div className="relative width-100pr margin-ryt-25">
+                                                              <input type="text" className=" model-input font-16 capitalize" name={`start_${company_result}`} placeholder="Start date" />
+                                                              <Calendar
+                                                                onChange={this.onChange}
+                                                                value={this.state.date}
+                                                              />
+                                                          </div>
+                                                          <div className="relative width-100pr">
+                                                             <input type="text" className="model-input font-16 capitalize" name={`end_${company_result}`} placeholder="End date" />                                                       
+                                                          </div>
+                                                          </div>
                                                         <div className="addskills-container">
                                                           {this.state[company_result] && this.state[company_result].length>0 && 
                                                            this.state[company_result].map((result)=>{
@@ -203,7 +285,7 @@ class WorkExp extends CommonClass(Component){
                                        <button type="button" className="uppercase btn btn-default font-16" onClick={this.addMoreCompanies}><i className="icon wb-plus padding-ryt-10"></i>add more companies</button>
                                   </div>
                                   <div className="margin-top-15 txt-center">
-                                       <button className="uppercase btn btn-default font-16">save</button>
+                                       <button type="submit" className="uppercase btn btn-default font-16">save</button>
                                   </div>
                                   </form>
                               </div>

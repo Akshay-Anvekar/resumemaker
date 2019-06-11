@@ -59,6 +59,10 @@ const ResumeSchema = new mongoose.Schema({
           type: Array,
           default: SAMPLE_RESUME.skills
       },
+      workexp:{
+          type: Array,
+          default: SAMPLE_RESUME.workExp
+      },
       // workexp: [
       //    {
       //     // designation: {type: String, trim: true, lowercase: true},
