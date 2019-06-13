@@ -565,9 +565,11 @@
 
 /*CALEDER*/
 .react-calendar{
+  position: absolute;
   width: auto;
   font-size: 18px;
   line-height: unset;
+  z-index: 1000;
 }
 .react-calendar button{
   font-size: 16px;

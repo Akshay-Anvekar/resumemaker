@@ -11,6 +11,7 @@ class WorkExp extends CommonClass(Component){
          addExpBox : [],
          addNewCompany : [],
          date: new Date(),
+         allCalenders: 0,
          loading : 0, success :0
       }
       componentDidMount(){
@@ -35,28 +36,15 @@ class WorkExp extends CommonClass(Component){
       }
       addMoreCompanies = async ()=>{
          const addedId = this.state.addNewCompany;
-         addedId.push(this.randomString())
-         await this.setState({
-             addNewCompany: addedId
-         });
-         this.addMoreWorkExp();
+         if(addedId.length<4){
+             addedId.push(this.randomString())
+             await this.setState({
+                 addNewCompany: addedId
+             });
+             this.addMoreWorkExp();
+         }
          return false;   
       }
-
-
-        //      {
-        //   designation: 'Administrative Assistant',
-        //   company: 'company A',
-        //   city: 'San Francisco', state: 'CA',
-        //   start: '02/2017', end: 'Current',
-        //   details: [
-        //       'Screened all visitors and directed them to the correct employee or office.',
-        // 'Facilitated organized record retrieval and access.',
-        // 'Organized all new hire, security and temporary paperwork.'
-        //   ],
-        //  },
-
-
       onSubmitForm = (e)=>{
              e.preventDefault();
              const {elements} = e.target;
@@ -78,15 +66,6 @@ class WorkExp extends CommonClass(Component){
                  workexpObject['details'] = currentWorkDetails;
                  userExperience.push(workexpObject);
              }
-             console.log(userExperience);
-             // const user_skills = this.state.addSkillsBox;
-             // const user_skills_values = user_skills.map((res)=>{
-             //     return e.target.elements[res].value;
-             // });
-             // // if(!this.validateInputs(e.target.elements, {user_name, user_email, user_phone})){
-             // //    return;
-             // // }
-             // console.log(user_skills_values);
              this.setState({loading: 1})
              this.props.updateResume({user_exp: userExperience}, 3, ()=>{
                   this.setState({success:1})
@@ -96,10 +75,26 @@ class WorkExp extends CommonClass(Component){
                   }, 1500)
              });
       }
-      onChange = async (date) => {
-        console.log(new Date(date));
+      onChange = async (date, eleToUpdate) => {
         await this.setState({ date });
-        console.log((this.state.date).getTime())
+        const curdate = (this.state.date).getDate(),
+              month = (this.state.date).getMonth()+1,
+              year = (this.state.date).getFullYear();
+        //UPDATE FIELDS
+        document.getElementsByName(eleToUpdate)[0].value = `${curdate}/0${month}/${year}`;
+        document.getElementsByClassName(eleToUpdate)[0].classList.add('display-none')
+      }
+      openCalender = async (e)=>{
+            let stateVar = e.target.name;
+            await this.setState({[stateVar]: 1});
+            let allCalenders = document.getElementsByClassName('react-calendar');
+            for(let x of allCalenders){
+                if(x.classList.contains(stateVar)){
+                   x.classList.remove('display-none')
+                }else{
+                   x.classList.add('display-none')
+                }
+            }
       }
       render(){
       	 return(
@@ -236,37 +231,51 @@ class WorkExp extends CommonClass(Component){
                            <main>
                               <div className="margin-top-5">
                                   <div className="font-16 margin-botm-5 color-90949c">Update your work exprerience</div>
-                                  <form method="post" onSubmit={this.onSubmitForm}>
+                                  <form method="post" autoComplete="off"  onSubmit={this.onSubmitForm}>
                                    <div className="list-exps scroll-view" id="list_exps">
                                        {this.state.addNewCompany.length>0 &&
-                                        this.state.addNewCompany.map((company_result)=>{
+                                        this.state.addNewCompany.map((company_result, index)=>{
                                              return (
-                                                 <div className="company-list-box border-botm-light" key={company_result}>
-                                                      <div className="flex space-bw margin-top-15">
+                                                 <div className="flex space-bw company-list-box margin-top-15 border-botm-light" key={company_result}>
+                                                     <div className="padding-top-10">{index+1}. </div>
+                                                     <div className="width-90pr">
+                                                        <div className="flex space-bw margin-botm-15">
                                                              <input type="text" className="model-input font-16 capitalize margin-ryt-25" name={`designation_${company_result}`} placeholder="Your designation" />
                                                              <input type="text" className="model-input font-16 capitalize" name={`company_${company_result}`} placeholder="Your company" />
                                                         </div>
-                                                        <div className="flex space-bw margin-top-15">
+                                                        <div className="flex space-bw margin-botm-15">
                                                              <input type="text" className="model-input font-16 capitalize margin-ryt-25" name={`city_${company_result}`}  placeholder="City" />
                                                              <input type="text" className="model-input font-16 capitalize" name={`state_${company_result}`} placeholder="State" />
                                                         </div>
-                                                        <div className="flex space-bw margin-top-15">
+                                                        <div className="flex space-bw margin-botm-15">
                                                           <div className="relative width-100pr margin-ryt-25">
-                                                              <input type="text" className=" model-input font-16 capitalize" name={`start_${company_result}`} placeholder="Start date" />
-                                                              <Calendar
-                                                                onChange={this.onChange}
-                                                                value={this.state.date}
-                                                              />
+                                                              <input type="text" className="model-input font-16 capitalize" name={`start_${company_result}`} onClick={this.openCalender} placeholder="Start date" />
+                                                              {this.state[`start_${company_result}`] && this.state[`start_${company_result}`]==1
+                                                                && 
+                                                                <Calendar
+                                                                 onChange={(e)=>this.onChange(e, `start_${company_result}`)}
+                                                                 value={this.state.date}
+                                                                 className={`start_${company_result} display-none`}
+                                                                />
+                                                              }
                                                           </div>
                                                           <div className="relative width-100pr">
-                                                             <input type="text" className="model-input font-16 capitalize" name={`end_${company_result}`} placeholder="End date" />                                                       
+                                                             <input type="text" className="model-input font-16 capitalize" name={`end_${company_result}`} onClick={this.openCalender} placeholder="End date" />                                                       
+                                                             {this.state[`end_${company_result}`] && this.state[`end_${company_result}`]==1
+                                                               &&
+                                                               <Calendar
+                                                                 onChange={(e)=>this.onChange(e, `end_${company_result}`)}
+                                                                 value={this.state.date}
+                                                                 className={`end_${company_result} display-none`}
+                                                               />
+                                                              } 
                                                           </div>
                                                           </div>
-                                                        <div className="addskills-container">
+                                                        <div className="addskills-container margin-botm-15">
                                                           {this.state[company_result] && this.state[company_result].length>0 && 
                                                            this.state[company_result].map((result)=>{
                                                                 return (
-                                                                    <div className="flex space-bw align-center margin-top-15" key={result}>
+                                                                    <div className="flex space-bw align-center margin-botm-15" key={result}>
                                                                          <input type="text" className="model-input font-16 capitalize" name={result} id={result} placeholder="Work details" />
                                                                          <span className="margin-lft-10"><a className="" onClick={(e)=>this.removeGeneratedTag(e, this.state[company_result], result, company_result)}><i className="icon wb-trash color-trash font-18"></i></a></span>
                                                                     </div>
@@ -274,9 +283,13 @@ class WorkExp extends CommonClass(Component){
                                                            })
                                                           }
                                                         </div>
-                                                        <div className="margin-top-15">
+                                                        <div className="margin-botm-15">
                                                             <button type="button" className="uppercase btn btn-default font-16" data-parent={company_result} onClick={this.addMoreWorkExp}><i className="icon wb-plus padding-ryt-10"></i> add more about your role</button>
                                                         </div>
+                                                     </div>
+                                                     <div className="padding-top-10">
+                                                             <span className="margin-lft-10"><a className="" onClick={(e)=>this.removeGeneratedTag(e, this.state.addNewCompany, company_result, 'addNewCompany')}><i className="icon wb-trash color-trash font-18"></i></a></span>
+                                                     </div>
                                                   </div>
                                              )
                                         })}

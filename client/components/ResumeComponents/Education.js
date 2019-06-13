@@ -7,7 +7,8 @@ import * as actions from '../actions'
 class Personal extends CommonClass(Component){
       state = {
          addExpBox : [],
-         addNewCollege : []
+         addNewCollege : [],
+         loading : 0, success :0
       }
       componentDidMount(){
          this.addMoreCompanies();
@@ -21,8 +22,30 @@ class Personal extends CommonClass(Component){
          document.getElementById('list-educations').scrollTop = document.getElementById('list-educations').scrollHeight;
          return false;   
       }
-      onFormSubmit(){
-          return false;
+      onSubmitForm = (e)=>{
+             e.preventDefault();
+             const {elements} = e.target;
+             console.log(elements)
+             const listOfEducations = [],
+                   education_ids = this.state.addNewCollege;
+             for(let x of education_ids){
+                 let educationObject = {};
+                 educationObject['degree'] = elements[`degree_${x}`].value; 
+                 educationObject['college'] = elements[`college_${x}`].value; 
+                 educationObject['state'] = elements[`state_${x}`].value; 
+                 educationObject['passedout'] = elements[`passedout_${x}`].value; 
+                 educationObject['university'] = elements[`university_${x}`].value; 
+                 listOfEducations.push(educationObject);
+             }
+             console.log(listOfEducations);
+             this.setState({loading: 1})
+             this.props.updateResume({user_education: listOfEducations}, 4, ()=>{
+                  this.setState({success:1})
+                  setTimeout(()=>{
+                    this.closeAllModel();
+                    this.setState({loading: 0, success: 0})
+                  }, 1500)
+             });
       }
       render(){
       	 return(
@@ -89,9 +112,19 @@ class Personal extends CommonClass(Component){
                </div>
                <div className="model-backdrop display-none" id="education_model">
                       <div className="model-box model-width-700">
+                          {this.state.loading==1 &&                            
+                              <div className="loading-cover">
+                                {this.state.success==1
+                                  ? <svg className="svg-success-80" viewBox="0 0 426.667 426.667">
+                                                <use href="/icons/sprites.svg#success_completed" />
+                                    </svg>
+                                  : <img className="svg-icons-loading" src="/icons/loading.svg"/>
+                                }
+                              </div>
+                           }
                            <header className="flex">
                                <h3 className="uppercase">educational details</h3>
-                               <a href="#" data-model="#education_model" id="close_educationmodel" onClick={this.closeModel}>
+                               <a href="#" data-model="#education_model" id="close_educationmodel" className="close-model" onClick={this.closeModel}>
                                  <svg className="svg-icons-20 pointer" viewBox="0 0 612 612">
                                               <use href="/icons/sprites.svg#croos_icon" />
                                  </svg>
@@ -100,7 +133,7 @@ class Personal extends CommonClass(Component){
                            <main>
                               <div className="margin-top-5">
                                   <div className="font-16 margin-botm-5 color-90949c">Update your educational details</div>
-                                  <form method="post" onSubmit={this.onFormSubmit}>
+                                  <form method="post" autoComplete="off"  onSubmit={this.onSubmitForm}>
                                    <div className="list-exps" id="list-educations">
                                        {this.state.addNewCollege.length>0 &&
                                         this.state.addNewCollege.map((college_result, index)=>{
@@ -109,15 +142,15 @@ class Personal extends CommonClass(Component){
                                                         <div className="padding-top-10">{index+1}. </div>
                                                         <div className="width-90pr">
                                                             <div className="flex space-bw margin-botm-15">
-                                                                   <input type="text" className="model-input font-16 capitalize margin-ryt-25" name="edit_name" placeholder="Your Degree" />
-                                                                   <input type="text" className="model-input font-16 capitalize" name="edit_email" placeholder="Your College" />
+                                                                   <input type="text" className="model-input font-16 capitalize margin-ryt-25" name={`degree_${college_result}`} placeholder="Your Degree" />
+                                                                   <input type="text" className="model-input font-16 capitalize" name={`college_${college_result}`} placeholder="Your College" />
                                                             </div>
                                                             <div className="flex space-bw margin-botm-15">
-                                                                 <input type="text" className="model-input font-16 capitalize margin-ryt-25" name="edit_pic" placeholder="State" />
-                                                                 <input type="text" className="model-input font-16 capitalize" name="edit_pic" placeholder="Year of passing" />
+                                                                 <input type="text" className="model-input font-16 capitalize margin-ryt-25" name={`state_${college_result}`} placeholder="State" />
+                                                                 <input type="text" className="model-input font-16 capitalize" name={`passedout_${college_result}`} placeholder="Year of passing" />
                                                             </div>
                                                             <div className="flex space-bw margin-botm-15">
-                                                                 <input type="text" className="model-input font-16 capitalize" name="edit_pic" placeholder="University" />
+                                                                 <input type="text" className="model-input font-16 capitalize" name={`university_${college_result}`} placeholder="University" />
                                                             </div>
                                                         </div>
                                                         <div className="padding-top-10">
@@ -131,7 +164,7 @@ class Personal extends CommonClass(Component){
                                        <button type="button" className="uppercase btn btn-default font-16" onClick={this.addMoreCompanies}><i className="icon wb-plus padding-ryt-10"></i>add more college details</button>
                                   </div>
                                   <div className="margin-top-15 txt-center">
-                                       <button className="uppercase btn btn-default font-16">save</button>
+                                       <button type="submit" className="uppercase btn btn-default font-16">save</button>
                                   </div>
                                   </form>
                               </div>
