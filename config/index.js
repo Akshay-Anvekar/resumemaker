@@ -1,6 +1,6 @@
 export default {
   env: process.env.NODE_ENV || 'development',
-  port: process.env.PORT || 8080,
+  port: process.env.PORT || 8000,
   mongoURI : 'mongodb+srv://feelfunny:feelfunny123@feelfunny-jfu4v.mongodb.net/test?retryWrites=true',
   API_URL: "http://localhost:3000",
   ACCESS_TOKEN : "0z6v8b4uua",
@@ -8,6 +8,7 @@ export default {
   	 100: 'Please put a valid image url',
   	 101: 'Please refresh and try to login again'
   },
+  LOCALSESSION_ID : "0z6v8b4ua", 
   GOOGLE_CLIENTID: "38122336055-2l78jb89vfsj8qtr8ac58t5onqv5bs3j.apps.googleusercontent.com",
   GOOGLE_SECRET: "Sk34RldCKENc73QcQWxfd1JU",
   LOGOUT_REDIRECT: "http://localhost:8080"

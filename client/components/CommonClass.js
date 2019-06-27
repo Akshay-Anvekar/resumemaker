@@ -1,3 +1,4 @@
+import CONFIG from '../../config'
 export default (Component)=>{
 	 return class Common extends Component{
 	      attachWindowToModel = ()=>{
@@ -5,6 +6,9 @@ export default (Component)=>{
 	               if(e.target.classList.contains('model-backdrop'))
 	                  e.target.classList.add('display-none');
 	         }
+	      }
+	      getResumeToken = ()=>{
+	      	  return localStorage.getItem(CONFIG.LOCALSESSION_ID);
 	      }
 	      closeAllModel(){
 	     	   let a = document.getElementsByClassName('close-model');
@@ -25,7 +29,8 @@ export default (Component)=>{
 	           for(let x of a)
 	               x.value = '';
 	      }
-	      randomString = ()=>Math.random().toString(36).substring(7);
+	      //randomString = ()=>Math.random().toString(36).substring(7);
+	      randomString = ()=>Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 	      removeGeneratedTag = (e, arr, value, stateValue)=>{
 	      	    e.preventDefault();
 	      	    if(arr.length>1){

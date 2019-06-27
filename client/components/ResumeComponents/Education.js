@@ -55,56 +55,34 @@ class Personal extends CommonClass(Component){
                           education
                       </div>
                       <div className="resume-content">
-                           <div className="education-info-box">
-                             <div>
-                                 <ul className="inline-items">
-                                   <li>
-                                    <span className="txt-bold">Master of Arts</span>
-                                   </li>
-                                   <li className="seperator-dot">
-                                    <span className="capitalize txt-itlc">San Jose State University</span>
-                                   </li>
-                                 </ul>
-                              </div>
-                              <div>
-                                 <ul className="inline-items">
-                                   <li>
-                                    <span className="capitalize">San Jose State University</span>
-                                    <span>, </span>
-                                    <span>CA</span>
-                                   </li>
-                                   <li className="seperator-dot">
-                                    <span>2014</span>
-                                   </li>
-                                 </ul>
-                              </div>
-                            </div>
-                            <div className="education-info-box">
-                              <div>
-                                 <ul className="inline-items">
-                                   <li>
-                                    <span className="txt-bold">Bachelor of Arts</span>
-                                   </li>
-                                   <li className="seperator-dot">
-                                    <span className="capitalize txt-itlc">San Jose State University</span>
-                                   </li>
-                                 </ul>
-                              </div>
-                              <div>
-                                 <ul className="inline-items">
-                                   <li>
-                                    <span className="capitalize">San Jose State University</span>
-                                    <span>, </span>
-                                    <span>CA</span>
-                                   </li>
-                                   <li className="seperator-dot">
-                                    <span>2014</span>
-                                   </li>
-                                 </ul>
-                              </div>
-                              </div>
-                         <div className="education-info-box"></div>
-                         <div className="education-info-box"></div>
+                           {this.props.resume_data && this.props.resume_data.education.map((educationList)=>{
+                               return (
+                                <div className="education-info-box">
+                                 <div>
+                                     <ul className="inline-items">
+                                       <li>
+                                        <span className="txt-bold">{educationList.degree}</span>
+                                       </li>
+                                       <li className="seperator-dot">
+                                        <span className="capitalize txt-itlc">{educationList.college}</span>
+                                       </li>
+                                     </ul>
+                                  </div>
+                                  <div>
+                                     <ul className="inline-items">
+                                       <li>
+                                        <span className="capitalize">{educationList.university}</span>
+                                        <span>, </span>
+                                        <span>{educationList.state}</span>
+                                       </li>
+                                       <li className="seperator-dot">
+                                        <span>{educationList.passedout}</span>
+                                       </li>
+                                     </ul>
+                                  </div>
+                                </div>
+                               )
+                           })}
                       </div>
                       <div className="edit-section">
                           <a href="#" className="color-edit" data-model="#education_model" onClick={this.openModel}><i className="icon wb-edit"></i></a>
@@ -134,7 +112,7 @@ class Personal extends CommonClass(Component){
                               <div className="margin-top-5">
                                   <div className="font-16 margin-botm-5 color-90949c">Update your educational details</div>
                                   <form method="post" autoComplete="off"  onSubmit={this.onSubmitForm}>
-                                   <div className="list-exps" id="list-educations">
+                                   <div className="list-exps scroll-view" id="list-educations">
                                        {this.state.addNewCollege.length>0 &&
                                         this.state.addNewCollege.map((college_result, index)=>{
                                              return (

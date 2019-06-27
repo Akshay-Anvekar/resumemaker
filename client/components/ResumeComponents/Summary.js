@@ -31,7 +31,7 @@ class Summary extends CommonClass(Component){
                            professional summary
                       </div>
                       <div className="resume-content">
-                          <div>Highly organized and meticulous Administrative Assistant with experience in corporate office settings.Adept at preparing and maintaining files, greeting visitors and restocking supplies. Good communicator and planner with strong judgment and critical thinking abilities.</div>
+                          <div>{this.props.resume_data && this.props.resume_data.summary}</div>
                       </div>
                       <div className="edit-section">
                           <a href="#" className="color-edit" data-model="#summary_modal" onClick={this.openModel}><i className="icon wb-edit"></i></a>

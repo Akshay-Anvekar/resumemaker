@@ -4,6 +4,10 @@ import SAMPLE_RESUME from '../../config/resume_sample';
 // const {DB} = CONFIG;
 
 const ResumeSchema = new mongoose.Schema({
+      resume_id:{
+         type:String,
+         unique: true, required: true
+      },
       name: {
         type: String,
         trim:true,
@@ -61,7 +65,7 @@ const ResumeSchema = new mongoose.Schema({
       },
       workexp:{
           type: Array,
-          default: SAMPLE_RESUME.workExp
+          default: SAMPLE_RESUME.workexp
       },
       education:{
           type: Array,

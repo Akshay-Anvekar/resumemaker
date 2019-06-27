@@ -24,7 +24,7 @@ export default {
 		'Multi-line phone proficiency',
 		'Filing and data archiving'
 	  ],
-	  workExp:[
+	  workexp:[
          {
          	designation: 'Administrative Assistant',
          	company: 'company A',

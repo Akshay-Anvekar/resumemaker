@@ -31,12 +31,12 @@ class Personal extends CommonClass(Component){
            <Fragment>
                 <div className="resume_section section-border resume_personal">
                       <div className="name-section uppercase">
-                      	  himanshu savita
+                      	  {this.props.resume_data && this.props.resume_data.name}
                       </div>
                       <div className="txt-right margin-ryt-30">
-                      	  <div>8299852138</div>
-                      	  <div>Cras id dui. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, Bangalore, KA, 560017</div>
-                      	  <div>sunny@gmail.com</div>
+                      	  <div>{this.props.resume_data && this.props.resume_data.phone.primary}</div>
+                      	  <div>{this.props.resume_data && this.props.resume_data.address.primary}</div>
+                      	  <div>{this.props.resume_data && this.props.resume_data.email.primary}</div>
                       </div>
                       <div className="edit-section">
                       	  <a href="#" className="color-edit" data-model="#personal_model" onClick={this.openModel}><i className="icon wb-edit"></i></a>

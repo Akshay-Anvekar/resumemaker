@@ -4,15 +4,18 @@ import reduxThunk from 'redux-thunk'
 import {Provider} from 'react-redux'
 import {createStore, applyMiddleware} from 'redux'
 import MainRouter from './MainRouter'
-
+import CONFIG from '../config'
 import reducers from './components/reducers'
 import './assets/main.css'
 
 class App extends Component{
       render(){
+      	 const initialState = {
+               resume_data: null,
+      	 };
       	 return(
       	 	<BrowserRouter>
-            <Provider store={applyMiddleware(reduxThunk)(createStore)(reducers)}>
+            <Provider store={applyMiddleware(reduxThunk)(createStore)(reducers, initialState)}>
                  <MainRouter/>
             </Provider>
             </BrowserRouter>

@@ -14,6 +14,16 @@ import CommonClass from './CommonClass'
 
 class Home extends CommonClass(Component){
 	  componentDidMount(){
+	  	const randomStr = this.randomString();
+	  	let resumeID = null;
+	  	if(localStorage.getItem(CONFIG.LOCALSESSION_ID)){
+           resumeID = localStorage.getItem(CONFIG.LOCALSESSION_ID);
+	  	}else{
+           localStorage.setItem(CONFIG.LOCALSESSION_ID, randomStr);
+	  	}
+	  	this.props.loadSampleResume(resumeID, ()=>{
+	  		 console.log(this.props);
+	  	});
 	  }
       render(){
       	 return(

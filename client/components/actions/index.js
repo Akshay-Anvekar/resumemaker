@@ -3,14 +3,29 @@ import CONFIG from '../../../config'
 import axios from 'axios'
 
 export const updateResume = (formdata, info_type, cb)=>{
-
+       formdata['resume_id'] = localStorage.getItem(CONFIG.LOCALSESSION_ID);
        return async (dispatch)=>{
         console.log(formdata)
            const {data} = await axios.post('/api/update-resume', {...formdata, info_type});
-           console.log(data); 
            dispatch({
               type: UPDATE_RESUME,
-              payload: null
+              payload: data.data
+           })
+           cb();
+       }
+}
+
+
+export const loadSampleResume = (resume_id, cb)=>{
+       let loadResumeURL = `/api/get-resume-data`;
+       if(resume_id){
+          loadResumeURL += `?id=${resume_id}`;
+       }
+       return async (dispatch)=>{
+           const {data} = await axios.get(`${loadResumeURL}`);
+           dispatch({
+              type: UPDATE_RESUME,
+              payload: data.data
            })
            cb();
        }

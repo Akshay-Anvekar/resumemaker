@@ -1,6 +1,4 @@
-export default (result)=>{
-	return (
-     `<!doctype html>
+<!doctype html>
       <html lang="en">
         <head>
             <title>feelfunny</title>
@@ -17,19 +15,18 @@ export default (result)=>{
                 <main class="main-content-box">
                     <div class="main-content-wrapper">
                         <div class="resume_section section-border resume_personal">
-                            <div class="name-section uppercase">${result.name}</div>
+                            <div class="name-section uppercase">himanshu savita</div>
                             <div class="txt-right margin-ryt-30">
-                                <div>${result.phone.primary}</div>
-                                <div>${result.address.primary}</div>
-                                <div>${result.email.primary}</div>
+                                <div>8299852138</div>
+                                <div>Cras id dui. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, Bangalore, KA, 560017</div>
+                                <div>sunny@gmail.com</div>
                             </div>
                         </div>
                         <div class="resume_section resume_summary">
                             <div class="section_heading uppercase">professional summary</div>
                             <div class="resume-content">
-                                <div>${result.summary && result.skills.map((res)=>{
-                                	 return res;
-                                })}</div>
+                                <div>Highly organized and meticulous Administrative Assistant with experience in corporate office settings.Adept at preparing and maintaining files, greeting visitors and restocking supplies. Good communicator and planner with strong judgment
+                                    and critical thinking abilities.</div>
                             </div>
                         </div>
                         <div class="resume_section resume_skills">
@@ -165,6 +162,4 @@ export default (result)=>{
                     </main>
           </div>
         </body>
-      </html>`
-	)
-}
+      </html>

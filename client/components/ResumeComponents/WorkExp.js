@@ -104,105 +104,45 @@ class WorkExp extends CommonClass(Component){
                           work history
                       </div>
                       <div className="resume-content">
-                        <div className="work-info-box">
-                            <div>
-                               <ul className="inline-items">
-                                 <li>
-                                  <span className="txt-bold">Administrative Assistant</span>
-                                 </li>
-                                 <li className="seperator-dot">
-                                  <span className="uppercase txt-itlc">Company A</span>
-                                 </li>
-                               </ul>
-                            </div>
-                            <div>
-                               <ul className="inline-items">
-                                 <li>
-                                  <span>San Francisco</span>
-                                  <span>, </span>
-                                  <span>CA</span>
-                                 </li>
-                                 <li className="seperator-dot">
-                                  <span>02/2017</span>
-                                  <span> to </span>
-                                  <span>Current</span>
-                                 </li>
-                               </ul>
-                            </div>
-                            <div className="margin-lft-35">
-                               <ul>
-                                 <li>Screened all visitors and directed them to the correct employee or office.</li>
-                                 <li>Facilitated organized record retrieval and access.</li>
-                                 <li>Organized all new hire, security and temporary paperwork.</li>
-                               </ul>
-                            </div>
-                           </div>
-                           <div className="work-info-box">
-                            <div>
-                               <ul className="inline-items">
-                                 <li>
-                                  <span className="txt-bold">Customer Service Representative</span>
-                                 </li>
-                                 <li className="seperator-dot">
-                                  <span className="uppercase txt-itlc">Company B</span>
-                                 </li>
-                               </ul>
-                            </div>
-                            <div>
-                               <ul className="inline-items">
-                                 <li>
-                                  <span>Berkeley</span>
-                                  <span>, </span>
-                                  <span>CA</span>
-                                 </li>
-                                 <li className="seperator-dot">
-                                  <span>02/2016</span>
-                                  <span> to </span>
-                                  <span>02/2017</span>
-                                 </li>
-                               </ul>
-                            </div>
-                            <div className="margin-lft-35">
-                               <ul>
-                                    <li>Asked open-ended questions to assess customer needs.</li>
-                                    <li>Scored in top 10% of employees in successful resolution of issues.</li>
-                                    <li>Built long-term customer relationships and advised customers on purchases and promotions.</li>
-                               </ul>
-                            </div>
-                           </div>
-                           <div className="work-info-box">
-                            <div>
-                               <ul className="inline-items">
-                                 <li>
-                                  <span className="txt-bold">Cashier</span>
-                                 </li>
-                                 <li className="seperator-dot">
-                                  <span className="uppercase txt-itlc">Company C</span>
-                                 </li>
-                               </ul>
-                            </div>
-                            <div>
-                               <ul className="inline-items">
-                                 <li>
-                                  <span>San Francisco</span>
-                                  <span>, </span>
-                                  <span>CA</span>
-                                 </li>
-                                 <li className="seperator-dot">
-                                  <span>02/2014</span>
-                                  <span> to </span>
-                                  <span>02/2016</span>
-                                 </li>
-                               </ul>
-                            </div>
-                            <div className="margin-lft-35">
-                               <ul>
-                                  <li>Ran the register effectively and handled cash and credit purchases.</li>
-                                  <li>Attended to customer needs, questions and complaints.</li>
-                                  <li>Regularly checked the drawer to ensure that there were adequate cash and coin for transactions</li>
-                               </ul>
-                            </div>
-                           </div>
+                        {this.props.resume_data && this.props.resume_data.workexp.map((companiesList, index)=>{
+                          return(
+                                  <div className="work-info-box" key={index}>
+                                    <div>
+                                       <ul className="inline-items">
+                                         <li>
+                                          <span className="txt-bold">{companiesList.designation}</span>
+                                         </li>
+                                         <li className="seperator-dot">
+                                          <span className="uppercase txt-itlc">{companiesList.company}</span>
+                                         </li>
+                                       </ul>
+                                    </div>
+                                    <div>
+                                       <ul className="inline-items">
+                                         <li>
+                                          <span>{companiesList.city}</span>
+                                          <span>, </span>
+                                          <span>{companiesList.state}</span>
+                                         </li>
+                                         <li className="seperator-dot">
+                                          <span>{companiesList.start}</span>
+                                          <span> to </span>
+                                          <span>{companiesList.end}</span>
+                                         </li>
+                                       </ul>
+                                    </div>
+                                    <div className="margin-lft-35">
+                                       <ul>
+                                        {companiesList.details.length && companiesList.details.map((companyDetails, index)=>{
+                                            return (
+                                              <li key={index}>{companyDetails}</li> 
+                                            )
+                                        })}
+                                       </ul>
+                                    </div>
+                                   </div>
+                          )
+                        })}
                       </div>
                       <div className="edit-section">
                           <a href="#" className="color-edit" data-model="#work_model" onClick={this.openModel}><i className="icon wb-edit"></i></a>
