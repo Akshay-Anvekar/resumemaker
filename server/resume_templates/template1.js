@@ -1,3 +1,15 @@
+const listSkills = (skillsListArray)=>{
+	  let result = `<td><ul>`;
+	  for(let x=0; x<skillsListArray.length; x++){
+	  	  if(x!=0 && x%5==0)
+	  	     result += `</td></ul><td><ul><li>${skillsListArray[x]}</li>`;
+          else
+          	 result += `<li>${skillsListArray[x]}</li>`;
+	  }
+	  result += `</td></ul>`;
+      return result;
+}
+
 export default (result)=>{
 	return (
      `<!doctype html>
@@ -18,7 +30,7 @@ export default (result)=>{
                     <div class="main-content-wrapper">
                         <div class="resume_section section-border resume_personal">
                             <div class="name-section uppercase">${result.name}</div>
-                            <div class="txt-right margin-ryt-30">
+                            <div class="txt-right">
                                 <div>${result.phone.primary}</div>
                                 <div>${result.address.primary}</div>
                                 <div>${result.email.primary}</div>
@@ -27,9 +39,7 @@ export default (result)=>{
                         <div class="resume_section resume_summary">
                             <div class="section_heading uppercase">professional summary</div>
                             <div class="resume-content">
-                                <div>${result.summary && result.skills.map((res)=>{
-                                	 return res;
-                                })}</div>
+                                <div>${result.summary}</div>
                             </div>
                         </div>
                         <div class="resume_section resume_skills">
@@ -38,21 +48,7 @@ export default (result)=>{
                                 <table class="skills-list-table">
                                     <tbody>
                                         <tr class="vertical-top">
-                                            <td>
-                                                <ul>
-                                                    <li>Time management</li>
-                                                    <li>Time Letter preparation</li>
-                                                    <li>Correspondence handling</li>
-                                                    <li>Multi-line phone proficiency</li>
-                                                </ul>
-                                            </td>
-                                            <td>
-                                                <ul>
-                                                    <li>Documents filing</li>
-                                                    <li>Multi-line phone proficiency</li>
-                                                    <li>Filing and data archiving</li>
-                                                </ul>
-                                            </td>
+                                            ${listSkills(result.skills)}
                                         </tr>
                                     </tbody>
                                 </table>

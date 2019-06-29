@@ -61,14 +61,16 @@
     font-family: 'Roboto',sans-serif;
   }
   .section_heading{
-    float: left;
+    display: inline-block;
+    vertical-align: top;
     text-transform: uppercase;
     width: 120px;
     padding-right: 10px;
     font-weight: 600;
   }
   .resume-content{
-    margin-left: 120px;
+    width: 80%;
+    display: inline-block;
   }
   .inline-items{
      display: inline;

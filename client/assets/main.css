@@ -41,9 +41,10 @@
   }
   .main-content-wrapper{
      margin: auto;
-     width: 900px;
+     width: 1024px;
      background: #fff;
-     padding: 30px 62px;
+     /*padding: 30px 62px;*/
+     padding: 20px 50px;
      border: 1px solid transparent;
      box-shadow: 0px 1px 1px rgba(0,0,0,.15);
   }
@@ -67,14 +68,18 @@
     font-family: 'Roboto',sans-serif;
   }
   .section_heading{
-    float: left;
+    /*float: left;*/
+    display: inline-block;
+    vertical-align: top;
     text-transform: uppercase;
     width: 120px;
     padding-right: 10px;
     font-weight: 600;
   }
   .resume-content{
-    margin-left: 120px;
+/*    margin-left: 120px;*/
+    width: 80%;
+    display: inline-block;
   }
   .inline-items{
      display: inline;
