@@ -30,6 +30,16 @@ export const loadSampleResume = (resume_id, cb)=>{
            cb();
        }
 }
+
+
+export const downloadResume = async (cb)=>{
+       const resumeId = localStorage.getItem(CONFIG.LOCALSESSION_ID);
+       const {data} = await axios.get('/api/download-resume');
+       console.log(data);
+       cb();
+}
+
+
 // export const authUser = (user)=>{
 //           return async (dispatch)=>{
 //                  const token = localStorage.getItem(CONFIG.ACCESS_TOKEN);

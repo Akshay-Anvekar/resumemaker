@@ -23,7 +23,7 @@
     box-shadow: 0px 1px 1px rgba(0,0,0,.12);
 	}
 	.main-header-box{
-    max-width: 1224px;
+    max-width: 1024px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,7 +32,7 @@
 	}
   .nav-list>a{
       display: inline-block;
-      padding: 15px 20px;
+      padding: 15px 0px;
   }
 
   .main-content-box{
@@ -440,6 +440,9 @@
 	.padding-15-20{
         padding: 15px 20px;
 	}
+  .padding-0-20{
+        padding: 0px 20px;
+  }
 	.padding-10-13{
         padding: 10px 13px;
 	}
@@ -473,6 +476,10 @@
   }
   .float-left{
   	justify-content: flex-end;
+  }
+  .svg-icons-loading-50{
+     width: 50px;
+     height: auto;
   }
   .svg-icons-loading{
      width: 120px;

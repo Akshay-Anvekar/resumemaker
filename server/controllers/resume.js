@@ -115,6 +115,7 @@ export default (router)=>{
     })
 
     router.get('/get-template', resumeCheckdataMiddleware, (req, res)=>{
+    	 console.log(req.finalResumedata);
          res.send(Template1(req.finalResumedata));
     });
 
