@@ -22,6 +22,17 @@ class Skills extends CommonClass(Component){
          });
          document.getElementById('addskills_container').scrollTop = parseInt(document.getElementById('addskills_container').scrollHeight);
       }
+      listSkills = (skillsListArray)=>{
+          let result = `<td><ul>`;
+          for(let x=0; x<skillsListArray.length; x++){
+              if(x!=0 && x%5==0)
+                 result += `</td></ul><td><ul><li>${skillsListArray[x]}</li>`;
+                else
+                   result += `<li>${skillsListArray[x]}</li>`;
+          }
+          result += `</td></ul>`;
+          document.getElementById('skills_list').innerHTML = result;
+      }
       onSubmitForm = (e)=>{
              e.preventDefault();
              const user_skills = this.state.addSkillsBox;
@@ -51,22 +62,8 @@ class Skills extends CommonClass(Component){
                       <div className="resume-content">
                           <table className="skills-list-table">
                               <tbody>
-                                 <tr className="vertical-top">
-                                  <td>
-                                    <ul>
-                                       <li>Time management</li>
-                                       <li>Time Letter preparation</li>
-                                       <li>Correspondence handling</li>
-                                       <li>Multi-line phone proficiency</li>        
-                                    </ul>
-                                  </td>
-                                  <td>
-                                       <ul>
-                                         <li>Documents filing</li>
-                                       <li>Multi-line phone proficiency</li>
-                                       <li>Filing and data archiving</li>
-                                       </ul>
-                                  </td>
+                                 <tr className="vertical-top" id="skills_list">
+                                   {this.props.resume_data && this.listSkills(this.props.resume_data.skills)}
                                  </tr>
                               </tbody>
                           </table>

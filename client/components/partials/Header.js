@@ -34,7 +34,7 @@ class Header extends Component{
 		      	  	 <div className="nav-list uppercase">
 		      	  	    
 		      	  	    {this.state.loading==0
-		      	  	     ? <a href="#" onClick={this.downloadResume}>download<i class="icon padding-lft-8 wb-download"></i></a>
+		      	  	     ? <a href="#" onClick={this.downloadResume}>download<i className="icon padding-lft-8 wb-download"></i></a>
 		      	  	     : <img className="svg-icons-loading-50 margin-ryt-15" src="/icons/loading.svg"/>
 		      	  	    }
 		      	  	 </div>
